@@ -1,19 +1,51 @@
-
 {
   "name": "react-native-device-kit",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "A React Native wrapper for MedM DeviceKit SDK.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ignore-path .gitignore ."
+    "postinstall": "./scripts/postinstall.sh",
+    "lint": "tslint index.ts",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baygeldin/react-native-device-kit.git"
   },
   "keywords": [
-    "react-native"
+    "react",
+    "react-native",
+    "medm",
+    "medicine",
+    "device",
+    "sensor",
+    "sdk",
+    "hrm",
+    "ecg",
+    "spirometry",
+    "oxygen",
+    "glucose"
   ],
-  "author": "",
-  "license": "",
+  "author": "Alexander Baygeldin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/baygeldin/react-native-device-kit/issues"
+  },
+  "homepage": "https://github.com/baygeldin/react-native-device-kit#readme",
+  "devDependencies": {
+    "@types/node": "^10.3.2",
+    "@types/react-native": "^0.55.17",
+    "prettier": "^1.13.5",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
+    "typescript": "^2.9.1"
+  },
   "peerDependencies": {
-    "react-native": "^0.41.2"
+    "react-native": "^0.55.4"
+  },
+  "dependencies": {
+    "react-native": "^0.55.4"
   }
 }
