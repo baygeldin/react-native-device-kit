@@ -43,7 +43,8 @@
     "typescript": "^2.9.1"
   },
   "peerDependencies": {
-    "react-native": "^0.55.4"
+    "react-native": "^0.55.4",
+    "react-native-swift": "^1.2.1"
   },
   "dependencies": {
     "react-native": "^0.55.4"
