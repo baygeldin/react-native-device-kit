@@ -48,5 +48,8 @@
   },
   "dependencies": {
     "react-native": "^0.55.4"
+  },
+  "bin": {
+    "react-native-device-kit": "scripts/cli.js"
   }
 }
