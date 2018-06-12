@@ -50,3 +50,8 @@ build/
 # Build
 #
 dist/
+
+# Proprietary
+#
+android/libs/MedMDeviceKit.aar
+ios/Frameworks/MedMDeviceKit.framework
