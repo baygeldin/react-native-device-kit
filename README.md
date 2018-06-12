@@ -64,7 +64,9 @@ You could as well add it to your `package.json` scripts:
 ```javascript
 import DeviceKit from 'react-native-device-kit';
 
-DeviceKit.register(process.env.MEDM_DEVICEKIT_LICENSE_KEY)
+const sdk = new DeviceKit()
+
+sdk.register(process.env.MEDM_DEVICEKIT_LICENSE_KEY)
   .then(() => {
     // You're good to go.
   })
@@ -77,6 +79,6 @@ Check out the full API in [docs](docs).
 
 ## Notes
 
-- There's no tests (_sigh_). MedM DeviceKit SDK itself is well tested, but writing tests for a wrapper is just too much pain: it needs a test react native app, SDK mock and also RNDeviceKit native module mock to test JavaScript side. Another solution is to use AWS Device Farm, but it's not free.
+- There're no tests (_sigh_). MedM DeviceKit SDK itself is well tested, but writing tests for a wrapper is just too much pain: it needs a test react native app, SDK mock and also RNDeviceKit native module mock to test JavaScript side. Another solution is to use AWS Device Farm, but it's not free.
 - If you're planning to use stream measurements (as opposed to scalar measurements like blood glucose) then you'll probably need your app to work in background. For Android you would have to create a [foreground service](https://developer.android.com/guide/components/services#Foreground). On iOS [it's easier](https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html): just add `bluetooth-central` mode to your `Info.plist`.
 - Currently MedM DeviceKit returns measurements only as XML (documented [here](https://health.medm.com/docs/api/v3/index.html)), so you'll need to use something like [xmldom](https://github.com/jindw/xmldom).
