@@ -49,6 +49,11 @@
   "dependencies": {
     "react-native": "^0.55.4"
   },
+  "rnpm": {
+    "commands": {
+      "postlink": "node node_modules/react-native-device-kit/scripts/postlink.js"
+    }
+  },
   "bin": {
     "react-native-device-kit": "scripts/cli.js"
   }
