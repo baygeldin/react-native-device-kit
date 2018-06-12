@@ -6,7 +6,6 @@ const path = require('path');
 const glob = require('glob');
 
 const thisPath = process.cwd();
-const iosPath = path.join(thisPath, 'ios');
 
 // Patch Android
 const androidPath = path.join(thisPath, 'android');
