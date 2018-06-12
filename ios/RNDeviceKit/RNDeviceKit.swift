@@ -1,10 +1,10 @@
 import Foundation
 
-@objc(DeviceKit)
-class DeviceKit: RCTEventEmitter {
-  private typealias `Self` = DeviceKit
+@objc(RNDeviceKit)
+class RNDeviceKit: RCTEventEmitter {
+  private typealias `Self` = RNDeviceKit
 
-  static let MODULE_NAME = "DeviceKit"
+  static let MODULE_NAME = "RNDeviceKit"
 
   static let INIT_ERROR = "INIT_ERROR"
   static let PAIR_ERROR = "PAIR_ERROR"
