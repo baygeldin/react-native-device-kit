@@ -8,7 +8,8 @@
     "test": "echo \"There're no tests. Sorry, pal.\" && exit 1",
     "postinstall": "./scripts/postinstall.sh",
     "lint": "tslint index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "docs": "typedoc --theme markdown --mode file --excludeExternals --excludePrivate --readme none --out docs index.ts"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,8 @@
     "prettier": "^1.13.5",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
+    "typedoc": "^0.11.1",
+    "typedoc-plugin-markdown": "^1.1.13",
     "typescript": "^2.9.1"
   },
   "peerDependencies": {

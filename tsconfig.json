@@ -15,5 +15,6 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "declaration": true
-  }
+  },
+  "files": ["index.ts"]
 }
