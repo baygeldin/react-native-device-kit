@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"There're no tests. Sorry, pal.\" && exit 1",
+    "prepublish": "npm run build",
     "patch-types": "./scripts/patch-types.sh",
     "lint": "tslint index.ts",
     "build": "npm run patch-types && tsc",
