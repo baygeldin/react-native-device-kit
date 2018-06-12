@@ -6,9 +6,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"There're no tests. Sorry, pal.\" && exit 1",
-    "postinstall": "./scripts/postinstall.sh",
+    "patch-types": "./scripts/patch-types.sh",
     "lint": "tslint index.ts",
-    "build": "tsc",
+    "build": "npm run patch-types && tsc",
     "docs": "typedoc --theme markdown --mode file --excludeExternals --excludePrivate --readme none --out docs index.ts"
   },
   "repository": {
