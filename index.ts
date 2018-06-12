@@ -29,7 +29,7 @@ export type DEVICE_EVENTS =
 export type STATE_EVENTS = SCAN_FINISHED | COLLECTION_FINISHED;
 export type EVENTS = DATA | DEVICE_EVENTS | STATE_EVENTS;
 
-const deviceKitModule = NativeModules.DeviceKit;
+const deviceKitModule = NativeModules.RNDeviceKit;
 const eventEmitter = new NativeEventEmitter(deviceKitModule);
 const { EVENTS } = deviceKitModule;
 
