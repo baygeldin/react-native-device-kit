@@ -62,6 +62,6 @@
     }
   },
   "bin": {
-    "react-native-device-kit": "scripts/cli.js"
+    "inject-device-kit": "scripts/cli.js"
   }
 }
