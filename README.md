@@ -1,11 +1,11 @@
 # react-native-device-kit
 
-A React Native wrapper for [MedM DeviceKit SDK](https://www.medm.com/sdk/). It allows to seamlessly connect to a great deal of medical sensors bia Bluetooth and get such data as heart rate, blood pressure, temperature, spirometry etc. And with React Native it's even better! Just think about it: one codebase that works on both major platforms (iOS and Android) and supports lots of medical devices right out of the box! Note that this is just a wrapper, so in order to use it you still have to purchase the original library.
+A React Native wrapper for [MedM DeviceKit SDK](https://www.medm.com/sdk/). It allows to seamlessly connect to a great deal of medical sensors via Bluetooth and get such data as heart rate, blood pressure, temperature, spirometry, etc. And with React Native it's even better! Just think about it: one codebase that works on both major platforms (iOS and Android) and supports lots of medical devices right out of the box! Note that this is just a wrapper, so in order to use it you still have to purchase the original library.
 
 ## Getting started
 
 ```
-$ npm install react-native-device-kit --save`
+$ npm install react-native-device-kit --save
 ```
 
 Then in order to inject MedM DeviceKit SDK into building process:
@@ -66,10 +66,10 @@ import DeviceKit from 'react-native-device-kit';
 
 DeviceKit.register(process.env.MEDM_DEVICEKIT_LICENSE_KEY)
   .then(() => {
-    /* You're good to go. */
+    // You're good to go.
   })
   .catch(() => {
-    /* Don't forget to provide a licence key! */
+    // Don't forget to provide a licence key!
   });
 ```
 
