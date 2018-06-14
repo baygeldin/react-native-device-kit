@@ -242,6 +242,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../ios/Pods/**",
 					"$(SRCROOT)/../../../../ios/Pods",
+					"$(SRCROOT)/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -269,6 +270,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../ios/Pods/**",
 					"$(SRCROOT)/../../../../ios/Pods",
+					"$(SRCROOT)/Frameworks",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
