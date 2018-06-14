@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const path = require('glob');
+const glob = require('glob');
 const xcode = require('xcode');
 
 const thisPath = process.cwd();
@@ -54,7 +54,7 @@ pbxproj.parseSync();
 const property = 'FRAMEWORK_SEARCH_PATHS';
 const frameworkSearchPaths = pbxproj.getBuildProperty(property);
 frameworkSearchPaths.push(
-  '$(PROJECT_DIR)/../node_modules/react-native-device-kit/ios/Frameworks'
+  '"$(PROJECT_DIR)/../node_modules/react-native-device-kit/ios/Frameworks"'
 );
 pbxproj.updateBuildProperty(property, frameworkSearchPaths);
 fs.writeFileSync(pbxprojPath, pbxproj.writeSync());
