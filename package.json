@@ -59,7 +59,7 @@
   },
   "rnpm": {
     "commands": {
-      "postlink": "node node_modules/react-native-device-kit/scripts/postlink.js"
+      "postlink": "node node_modules/react-native-device-kit/scripts/postlink.js && node node_modules/react-native-swift/bin/postlink.js"
     }
   },
   "bin": {
