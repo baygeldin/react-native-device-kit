@@ -1,7 +1,7 @@
 #import <React/RCTEventEmitter.h>
 #import <React/RCTBridgeModule.h>
 
-@interface RCT_EXTERN_MODULE(DeviceKit, RCTEventEmitter)
+@interface RCT_EXTERN_MODULE(RNDeviceKit, RCTEventEmitter)
 
 RCT_EXTERN_METHOD(
   initialize: (NSString)key
