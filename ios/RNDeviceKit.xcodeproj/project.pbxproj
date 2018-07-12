@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		71D8F38A1FB7AA9D0000973C /* RNDeviceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F3891FB7AA9D0000973C /* RNDeviceKit.swift */; };
 		D1FBFE1420F77D7300AD70CE /* RNDeviceKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FBFE1320F77D7300AD70CE /* RNDeviceKit.m */; };
+		D1FBFF1920F7A69700AD70CE /* ObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FBFF1820F7A69700AD70CE /* ObjC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		71D8F3881FB7AA9D0000973C /* rn-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rn-Bridging-Header.h"; sourceTree = "<group>"; };
 		71D8F3891FB7AA9D0000973C /* RNDeviceKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNDeviceKit.swift; sourceTree = "<group>"; };
 		D1FBFE1320F77D7300AD70CE /* RNDeviceKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNDeviceKit.m; sourceTree = "<group>"; };
+		D1FBFF1720F7A68900AD70CE /* ObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjC.h; sourceTree = "<group>"; };
+		D1FBFF1820F7A69700AD70CE /* ObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +51,9 @@
 				71D8F37D1FB7A97B0000973C /* Products */,
 				71D8F3881FB7AA9D0000973C /* rn-Bridging-Header.h */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		71D8F37D1FB7A97B0000973C /* Products */ = {
 			isa = PBXGroup;
@@ -63,6 +68,8 @@
 			children = (
 				D1FBFE1320F77D7300AD70CE /* RNDeviceKit.m */,
 				71D8F3891FB7AA9D0000973C /* RNDeviceKit.swift */,
+				D1FBFF1720F7A68900AD70CE /* ObjC.h */,
+				D1FBFF1820F7A69700AD70CE /* ObjC.m */,
 			);
 			path = RNDeviceKit;
 			sourceTree = "<group>";
@@ -127,6 +134,7 @@
 			files = (
 				D1FBFE1420F77D7300AD70CE /* RNDeviceKit.m in Sources */,
 				71D8F38A1FB7AA9D0000973C /* RNDeviceKit.swift in Sources */,
+				D1FBFF1920F7A69700AD70CE /* ObjC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
