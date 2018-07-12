@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		71D8F38A1FB7AA9D0000973C /* RNDeviceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F3891FB7AA9D0000973C /* RNDeviceKit.swift */; };
+		D1FBFE1420F77D7300AD70CE /* RNDeviceKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FBFE1320F77D7300AD70CE /* RNDeviceKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,7 @@
 		71D8F37C1FB7A97B0000973C /* libRNDeviceKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNDeviceKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		71D8F3881FB7AA9D0000973C /* rn-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rn-Bridging-Header.h"; sourceTree = "<group>"; };
 		71D8F3891FB7AA9D0000973C /* RNDeviceKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNDeviceKit.swift; sourceTree = "<group>"; };
+		D1FBFE1320F77D7300AD70CE /* RNDeviceKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNDeviceKit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 		71D8F37E1FB7A97B0000973C /* RNDeviceKit */ = {
 			isa = PBXGroup;
 			children = (
+				D1FBFE1320F77D7300AD70CE /* RNDeviceKit.m */,
 				71D8F3891FB7AA9D0000973C /* RNDeviceKit.swift */,
 			);
 			path = RNDeviceKit;
@@ -122,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1FBFE1420F77D7300AD70CE /* RNDeviceKit.m in Sources */,
 				71D8F38A1FB7AA9D0000973C /* RNDeviceKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
