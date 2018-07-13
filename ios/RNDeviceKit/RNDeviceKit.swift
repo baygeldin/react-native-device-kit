@@ -87,22 +87,22 @@ class RNDeviceKit: RCTEventEmitter {
 	@objc func startScan(_ resolve: RCTPromiseResolveBlock,
 											 rejecter reject: RCTPromiseRejectBlock) {
 		do {
+      print(Self.MODULE_NAME, "Start scanning for devices.")
+      scanerHandler = ScanerHandler(
+        onNewDeviceFound: {
+          device in
+          self.foundDevices.append(device)
+          self.emitEvent(Self.DEVICE_FOUND_EVENT, withData: self.mapDeviceDescription(device))
+        },
+        onAmbiguousDeviceFound: {
+          devices in
+          for d in devices {
+            self.emitEvent(Self.AMBIGUOUS_DEVICE_FOUND_EVENT, withData: self.mapDeviceDescription(d))
+          }
+        },
+        onScanFinished: { self.emitEvent(Self.SCAN_FINISHED_EVENT, withData: nil) }
+      )
 			try ObjC.catchException {
-				print(Self.MODULE_NAME, "Start scanning for devices.")
-				scanerHandler = ScanerHandler(
-					onNewDeviceFound: {
-						device in
-						self.foundDevices.append(device)
-						self.emitEvent(Self.DEVICE_FOUND_EVENT, withData: self.mapDeviceDescription(device))
-				  },
-					onAmbiguousDeviceFound: {
-						devices in
-						for d in devices {
-							self.emitEvent(Self.AMBIGUOUS_DEVICE_FOUND_EVENT, withData: self.mapDeviceDescription(d))
-						}
-				  },
-					onScanFinished: { self.emitEvent(Self.SCAN_FINISHED_EVENT, withData: nil) }
-				)
 				scannerToken = MedMDeviceKit.getScanner().start(scanerHandler)
 			}
 			resolve(nil)
@@ -114,8 +114,8 @@ class RNDeviceKit: RCTEventEmitter {
 	@objc func stopScan(_ resolve: RCTPromiseResolveBlock,
 											rejecter reject: RCTPromiseRejectBlock) {
 		do {
+      print(Self.MODULE_NAME, "Stop scanning for devices.")
 			try ObjC.catchException {
-				print(Self.MODULE_NAME, "Stop scanning for devices.")
 				scannerToken?.stopScan()
 			}
 			resolve(nil)
@@ -142,17 +142,17 @@ class RNDeviceKit: RCTEventEmitter {
 											 resolver resolve: @escaping RCTPromiseResolveBlock,
 											 rejecter reject: @escaping RCTPromiseRejectBlock) {
 		do {
+      let device = foundDevices.first{ $0.sku == NSNumber(value: sku) }!
+      print(Self.MODULE_NAME, "Pair \(device.modelName) device with \(device.sku) SKU.")
+      addDeviceHandler = AddDeviceHandler(
+        onSuccess: { device in resolve(nil) },
+        onFailure: {
+          device in
+          let msg = "The device could not be paired: SKU \(device.sku), MAC \(device.address)."
+          reject(Self.PAIR_ERROR, msg, NSError(domain: "", code: 0, userInfo: [ NSLocalizedDescriptionKey: msg ]))
+        }
+      )
 			try ObjC.catchException {
-				let device = foundDevices.first{ $0.sku == NSNumber(value: sku) }!
-				print(Self.MODULE_NAME, "Pair \(device.modelName) device with \(device.sku) SKU.")
-				addDeviceHandler = AddDeviceHandler(
-					onSuccess: { device in resolve(nil) },
-					onFailure: {
-						device in
-						let msg = "The device could not be paired: SKU \(device.sku), MAC \(device.address)."
-						reject(Self.PAIR_ERROR, msg, NSError(domain: "", code: 0, userInfo: [ NSLocalizedDescriptionKey: msg ]))
-				  }
-				)
 				cancellationTokens.append(MedMDeviceKit.getDeviceManager().addDevice(addDeviceHandler, device))
 			}
 			resolve(nil)
@@ -165,8 +165,8 @@ class RNDeviceKit: RCTEventEmitter {
 													resolver resolve: RCTPromiseResolveBlock,
 													rejecter reject: RCTPromiseRejectBlock) {
 		do {
+      print(Self.MODULE_NAME, "Remove device with \(address) address.")
 			try ObjC.catchException {
-				print(Self.MODULE_NAME, "Remove device with \(address) address.")
 				MedMDeviceKit.getDeviceManager().removeDevice(byAddress: address)
 			}
 			resolve(nil)
@@ -190,8 +190,8 @@ class RNDeviceKit: RCTEventEmitter {
 	@objc func cancelPairings(_ resolve: RCTPromiseResolveBlock,
 														rejecter reject: RCTPromiseRejectBlock) {
 		do {
+      print(Self.MODULE_NAME, "Cancel all pairings.")
 			try ObjC.catchException {
-				print(Self.MODULE_NAME, "Cancel all pairings.")
 				for token in cancellationTokens { token.cancel() }
 			}
 			resolve(nil)
@@ -231,27 +231,27 @@ class RNDeviceKit: RCTEventEmitter {
 	@objc func startCollection(_ resolve: RCTPromiseResolveBlock,
 														 rejecter reject: RCTPromiseRejectBlock) {
 		do {
+      print(Self.MODULE_NAME, "Start data collection.")
+      dataHandler = DataHandler(
+        onNewData: {
+          device, reading in
+          let deviceMap = device != nil ? self.mapDeviceDescription(device!) : nil
+          let data: [String: Any?] = ["data": reading, "device": deviceMap]
+          self.emitEvent(Self.DATA_EVENT, withData: data)
+        },
+        onDataCollectionStopped: { self.emitEvent(Self.COLLECTION_FINISHED_EVENT, withData: nil) }
+      )
+      deviceStatusHandler = DeviceStatusHandler(
+        onConnected: {
+          device in
+          self.emitEvent(Self.DEVICE_CONNECTED_EVENT, withData: self.mapDeviceDescription(device))
+        },
+        onDisconnected: {
+          device in
+          self.emitEvent(Self.DEVICE_DISCONNECTED_EVENT, withData: self.mapDeviceDescription(device))
+        }
+      )
 			try ObjC.catchException {
-				print(Self.MODULE_NAME, "Start data collection.")
-				dataHandler = DataHandler(
-					onNewData: {
-						device, reading in
-						let deviceMap = device != nil ? self.mapDeviceDescription(device!) : nil
-						let data: [String: Any?] = ["data": reading, "device": deviceMap]
-						self.emitEvent(Self.DATA_EVENT, withData: data)
-				  },
-					onDataCollectionStopped: { self.emitEvent(Self.COLLECTION_FINISHED_EVENT, withData: nil) }
-				)
-				deviceStatusHandler = DeviceStatusHandler(
-					onConnected: {
-						device in
-						self.emitEvent(Self.DEVICE_CONNECTED_EVENT, withData: self.mapDeviceDescription(device))
-				  },
-					onDisconnected: {
-						device in
-						self.emitEvent(Self.DEVICE_DISCONNECTED_EVENT, withData: self.mapDeviceDescription(device))
-					}
-				)
 				collectionToken = MedMDeviceKit.getCollector().start(dataHandler, deviceStatusHandler)
 			}
 			resolve(nil)
@@ -263,8 +263,8 @@ class RNDeviceKit: RCTEventEmitter {
 	@objc func stopCollection(_ resolve: RCTPromiseResolveBlock,
 														rejecter reject: RCTPromiseRejectBlock) {
 		do {
+      print(Self.MODULE_NAME, "Stop data collection.")
 			try ObjC.catchException {
-				print(Self.MODULE_NAME, "Stop data collection.")
 				collectionToken?.stopCollect()
 			}
 			resolve(nil)
