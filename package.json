@@ -1,6 +1,6 @@
 {
   "name": "react-native-device-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A React Native wrapper for MedM DeviceKit SDK.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
