@@ -51,10 +51,14 @@ if (!pbxprojPath) {
 
 const pbxproj = xcode.project(pbxprojPath);
 pbxproj.parseSync();
+
 const property = 'FRAMEWORK_SEARCH_PATHS';
 const frameworkSearchPaths = pbxproj.getBuildProperty(property);
-frameworkSearchPaths.push(
-  '"$(PROJECT_DIR)/../node_modules/react-native-device-kit/ios/Frameworks"'
-);
-pbxproj.updateBuildProperty(property, frameworkSearchPaths);
-fs.writeFileSync(pbxprojPath, pbxproj.writeSync());
+const frameworksPatch =
+  '"$(PROJECT_DIR)/../node_modules/react-native-device-kit/ios/Frameworks"';
+
+if (!frameworkSearchPaths.includes(frameworksPatch)) {
+  frameworkSearchPaths.push(frameworksPatch);
+  pbxproj.updateBuildProperty(property, frameworkSearchPaths);
+  fs.writeFileSync(pbxprojPath, pbxproj.writeSync());
+}
