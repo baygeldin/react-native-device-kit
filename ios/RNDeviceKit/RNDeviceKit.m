@@ -4,51 +4,51 @@
 @interface RCT_EXTERN_MODULE(RNDeviceKit, RCTEventEmitter)
 
 RCT_EXTERN_METHOD(
-  initialize: (NSString)key
-  resolver: (RCTPromiseResolveBlock)resolve
-  rejecter: (RCTPromiseRejectBlock)reject
-)
+                  initialize: (NSString)key
+                  resolver: (RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject
+                  )
 
 RCT_EXTERN_METHOD(
-  stopScan: (RCTPromiseResolveBlock)resolve
-  rejecter: (RCTPromiseRejectBlock)reject
-)
+                  stopScan: (RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject
+                  )
 
 RCT_EXTERN_METHOD(
-  startScan: (RCTPromiseResolveBlock)resolve
-  rejecter: (RCTPromiseRejectBlock)reject
-)
+                  startScan: (RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject
+                  )
 
 RCT_EXTERN_METHOD(
-  stopCollection: (RCTPromiseResolveBlock)resolve
-  rejecter: (RCTPromiseRejectBlock)reject
-)
+                  stopCollection: (RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject
+                  )
 
 RCT_EXTERN_METHOD(
-  startCollection: (RCTPromiseResolveBlock)resolve
-  rejecter: (RCTPromiseRejectBlock)reject
-)
+                  startCollection: (RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject
+                  )
 
 RCT_EXTERN_METHOD(
-  listDevices: (RCTPromiseResolveBlock)resolve
-  rejecter: (RCTPromiseRejectBlock)reject
-)
+                  listDevices: (RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject
+                  )
 
 RCT_EXTERN_METHOD(
-  addDevice: (NSInteger)sku
-  resolver: (RCTPromiseResolveBlock)resolve
-  rejecter: (RCTPromiseRejectBlock)reject
-)
+                  addDevice: (NSInteger)sku
+                  resolver: (RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject
+                  )
 
 RCT_EXTERN_METHOD(
-  removeDevice: (NSString)address
-  resolver: (RCTPromiseResolveBlock)resolve
-  rejecter: (RCTPromiseRejectBlock)reject
-)
+                  removeDevice: (NSString)address
+                  resolver: (RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject
+                  )
 
 RCT_EXTERN_METHOD(
-  cancelPairings: (RCTPromiseResolveBlock)resolve
-  rejecter: (RCTPromiseRejectBlock)reject
-)
+                  cancelPairings: (RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject
+                  )
 
 @end
