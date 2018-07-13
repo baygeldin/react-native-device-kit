@@ -103,7 +103,7 @@ class RNDeviceKit: RCTEventEmitter {
         onScanFinished: { self.emitEvent(Self.SCAN_FINISHED_EVENT, withData: nil) }
       )
 			try ObjC.catchException {
-				scannerToken = MedMDeviceKit.getScanner().start(scanerHandler)
+				self.scannerToken = MedMDeviceKit.getScanner().start(self.scanerHandler)
 			}
 			resolve(nil)
 		} catch {
@@ -116,7 +116,7 @@ class RNDeviceKit: RCTEventEmitter {
 		do {
       print(Self.MODULE_NAME, "Stop scanning for devices.")
 			try ObjC.catchException {
-				scannerToken?.stopScan()
+				self.scannerToken?.stopScan()
 			}
 			resolve(nil)
 		} catch {
@@ -153,9 +153,8 @@ class RNDeviceKit: RCTEventEmitter {
         }
       )
 			try ObjC.catchException {
-				cancellationTokens.append(MedMDeviceKit.getDeviceManager().addDevice(addDeviceHandler, device))
+				self.cancellationTokens.append(MedMDeviceKit.getDeviceManager().addDevice(self.addDeviceHandler, device))
 			}
-			resolve(nil)
 		} catch {
 			reject(Self.UNKNOWN_ERROR, Self.UNKOWN_ERROR_MSG, error)
 		}
@@ -175,11 +174,11 @@ class RNDeviceKit: RCTEventEmitter {
 		}
 	}
 	
-	@objc func listDevices(_ resolve: RCTPromiseResolveBlock,
+	@objc func listDevices(_ resolve: @escaping RCTPromiseResolveBlock,
 												 rejecter reject: RCTPromiseRejectBlock) {
 		do {
 			try ObjC.catchException {
-				resolve(MedMDeviceKit.getDeviceManager().getDevicesList().map { mapDeviceDescription($0) })
+				resolve(MedMDeviceKit.getDeviceManager().getDevicesList().map { self.mapDeviceDescription($0) })
 			}
 		} catch {
 			reject(Self.UNKNOWN_ERROR, Self.UNKOWN_ERROR_MSG, error)
@@ -192,7 +191,7 @@ class RNDeviceKit: RCTEventEmitter {
 		do {
       print(Self.MODULE_NAME, "Cancel all pairings.")
 			try ObjC.catchException {
-				for token in cancellationTokens { token.cancel() }
+				for token in self.cancellationTokens { token.cancel() }
 			}
 			resolve(nil)
 		} catch {
@@ -252,7 +251,7 @@ class RNDeviceKit: RCTEventEmitter {
         }
       )
 			try ObjC.catchException {
-				collectionToken = MedMDeviceKit.getCollector().start(dataHandler, deviceStatusHandler)
+				self.collectionToken = MedMDeviceKit.getCollector().start(self.dataHandler, self.deviceStatusHandler)
 			}
 			resolve(nil)
 		} catch {
@@ -265,7 +264,7 @@ class RNDeviceKit: RCTEventEmitter {
 		do {
       print(Self.MODULE_NAME, "Stop data collection.")
 			try ObjC.catchException {
-				collectionToken?.stopCollect()
+				self.collectionToken?.stopCollect()
 			}
 			resolve(nil)
 		} catch {
