@@ -8,7 +8,9 @@ A React Native wrapper for [MedM DeviceKit SDK](https://www.medm.com/sdk/). It a
 $ npm install react-native-device-kit --save
 ```
 
-Then in order to inject MedM DeviceKit SDK into building process:
+### Injecting the MedM DeviceKit
+
+In order for `react-native-device-kit` to work you have to provide the original MedM DeviceKit library:
 
 ```
 $ npx inject-device-kit --android /path/to/MedMDeviceKit.aar --ios /path/to/MedMDeviceKit.framework
@@ -20,9 +22,22 @@ You could as well add it to your `package.json` scripts:
 "postinstall": "inject-device-kit --android /path/to/MedMDeviceKit.aar --ios /path/to/MedMDeviceKit.framework"
 ```
 
+Also, don't forget to embed MedM DeviceKit binaries into your application. In order to do that add `MedMDeviceKit.framework` to your project in Xcode, then in "General" tab of your target add it to "Embedded Binaries" section.
+
 ### Mostly automatic installation
 
-`$ react-native link react-native-device-kit`
+```
+$ react-native link
+```
+
+Alternatively:
+
+```
+$ react-native link react-native-device-kit
+$ react-native link react-native-swift
+```
+
+Yes, `react-native-swift` peer dependency is required unless you already use Swift in your project.
 
 ### Manual installation
 
@@ -31,7 +46,7 @@ You could as well add it to your `package.json` scripts:
 1.  In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
 2.  Go to `node_modules` ➜ `react-native-device-kit` and add `RNDeviceKit.xcodeproj`
 3.  In XCode, in the project navigator, select your project. Add `libRNDeviceKit.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4.  Embed framework in your project settings (tab "General", then "Embedded Binaries").
+4.  Add `$(PROJECT_DIR)/../node_modules/react-native-device-kit/ios/Frameworks` to `FRAMEWORK_SEARCH_PATHS`.
 5.  Run your project (`Cmd+R`)<
 
 #### Android
